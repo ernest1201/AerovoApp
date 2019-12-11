@@ -1,0 +1,2 @@
+rootProject.name='AerovoApp'
+include ':app'
