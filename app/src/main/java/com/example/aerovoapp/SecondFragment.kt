@@ -28,8 +28,17 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<TextView>(R.id.textview_second).text =
-                getString(R.string.hello_second_fragment, args.myArg)
+        view.findViewById<TextView>(R.id.textview_header).text =
+                getString(R.string.random_heading, args.myArg)
+
+        val count = args.myArg
+        val random = java.util.Random()
+        var randomNumber = 0
+        if (count > 0){
+            randomNumber = random.nextInt(count+1)
+        }
+
+        view.findViewById<TextView>(R.id.textView_random).text = randomNumber.toString()
 
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
