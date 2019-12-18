@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplayMenuActivity">
+
+    <include
+        android:id="@+id/include_topBar"
+        layout="@layout/top_bar"
+        android:layout_width="0dp"
+        android:layout_height="122dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/menu_mijn_aerovo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gotoMijnAerovo"
+        android:text="@string/Mijn_Aerovo"
+        app:layout_constraintBottom_toTopOf="@+id/menu_meldingen_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_topBar" />
+
+    <Button
+        android:id="@+id/menu_meldingen_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gotoMain"
+        android:text="@string/meldingen"
+        app:layout_constraintBottom_toTopOf="@+id/menu_instellingen_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_mijn_aerovo_button" />
+
+    <Button
+        android:id="@+id/menu_instellingen_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instellingen"
+        app:layout_constraintBottom_toTopOf="@+id/menu_grafiek_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_meldingen_button" />
+
+    <Button
+        android:id="@+id/menu_grafiek_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Grafiek"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_instellingen_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

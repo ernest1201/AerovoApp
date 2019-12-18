@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    tools:context=".mijnAerovo">
+
+    <include
+        android:id="@+id/include_topBar_menu"
+        layout="@layout/top_bar"
+        android:layout_width="0dp"
+        android:layout_height="122dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_aerovo"
+        layout="@layout/aerovo_mijn_aerovo"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/include_aerovo2"
+        app:layout_constraintTop_toBottomOf="@id/aerovo_toevoegen_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <include
+        android:id="@+id/include_aerovo2"
+        layout="@layout/aerovo_mijn_aerovo"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_aerovo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/menu_button_main"
+        android:layout_width="131dp"
+        android:layout_height="122dp"
+        android:background="#00FBFBFB"
+        android:onClick="gotoMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/aerovo_toevoegen_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="aerovoToevoegen"
+        android:text="@string/toevoegen"
+        app:layout_constraintTop_toBottomOf="@id/include_topBar_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    

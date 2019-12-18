@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AerovoApp</string>
+    <string name="app_name">Aerovo</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -7,8 +7,18 @@
     <string name="Random_button_text">Random</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">0</string>
-    <string name="random_heading">Here is a random number between 0 and %d</string>
-    <string name="toast_button_text">Toast</string>
-    <string name="count_button_text">count</string>
+    <string name="description_logo">Aerovo logo</string>
+    <string name="Aerovo">Aerovo</string>
+    <string name="MainTestButton">Main test button</string>
+    <string name="Mijn_Aerovo">Mijn Aerovo\'s</string>
+    <string name="meldingen">Meldingen</string>
+    <string name="instellingen">Instellingen</string>
+    <string name="Grafiek">Grafieken</string>
+    <string name="toevoegen">Toevoegen +</string>
+    <string name="aerovo_naam">Aerovo %d</string>
+    <string name="aerovo_locatie">%s</string>
+    <string name="aerovo_postcode">Postcode: %s</string>
+    <string name="aerovo_foto">aerovo foto</string>
+
+
 </resources>

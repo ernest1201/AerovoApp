@@ -2,24 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent" >
 
-    <include
-        layout="@layout/top_bar"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/AerovoLogo"
+        android:layout_width="131dp"
         android:layout_height="122dp"
+        android:contentDescription="@string/description_logo"
+        android:src="@drawable/aerovo_logo_nobackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/menu_button_main"
-        android:layout_width="131dp"
+    <TextView
+        android:id="@+id/Aerovo_tekst"
+        android:layout_width="0dp"
         android:layout_height="122dp"
-        android:background="#00FBFBFB"
-        android:onClick="gotoMenu"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/Aerovo"
+        android:textSize="72sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AerovoLogo"
         app:layout_constraintTop_toTopOf="parent" />
 
 
