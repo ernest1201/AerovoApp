@@ -46,5 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //TODO notificaties sturen
+
 
 }

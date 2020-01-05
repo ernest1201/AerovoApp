@@ -30,6 +30,9 @@ class mijnAerovo : AppCompatActivity() {
         Toast.makeText(applicationContext, "Toevoegen komt hier!", Toast.LENGTH_SHORT).show()
     }
 
+    //TODO variabel aantal aerovo's en tekst van server
+    
+
     fun showMenu(view: View) {
         setContentView(R.layout.activity_display_menu)
     }
@@ -51,6 +54,7 @@ class mijnAerovo : AppCompatActivity() {
     fun gotoGrafieken(view: View) {
         Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
     }
+
 
 
 }
