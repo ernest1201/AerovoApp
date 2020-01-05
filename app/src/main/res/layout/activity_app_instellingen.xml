@@ -20,9 +20,37 @@
         android:layout_width="131dp"
         android:layout_height="122dp"
         android:background="#00FBFBFB"
-        android:onClick="gotoMenu"
+        android:onClick="showMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/notificatieInstellingen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/notificatie_instellingen"
+        android:onClick="gotoNotificatieInstellingen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_topBar_appInstellingen" />
+
+
+    <Switch
+        android:id="@+id/consent_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="end"
+        android:onClick="changeConsent"
+        android:switchPadding="24dp"
+        android:text="@string/Consent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notificatieInstellingen" />
+
+    <!--TODO add account verwijderern button & contact scherm mockup 19-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

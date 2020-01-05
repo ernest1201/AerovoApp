@@ -22,7 +22,7 @@
         android:layout_width="131dp"
         android:layout_height="122dp"
         android:background="#00FBFBFB"
-        android:onClick="gotoMenu"
+        android:onClick="showMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,6 +55,9 @@
         android:onClick="aerovoToevoegen"
         android:text="@string/toevoegen"
         app:layout_constraintTop_toBottomOf="@id/include_topBar_mijnAerovo" />
+
+    <!--TODO maak knoppen voor elk apparaat en schermen daarvoor
+        TODO maak instellingen pagina voor elke aerovo-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

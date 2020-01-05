@@ -20,5 +20,9 @@
     <string name="aerovo_postcode">Postcode: %s</string>
     <string name="aerovo_foto">aerovo foto</string>
     <string name="Recente_meldingen">Recente meldingen</string>
+    <string name="notificatie_instellingen">Notificatie instellingen</string>
+    <string name="Consent">Toestemming delen van meetgegevens</string>
+
+
 
 </resources>

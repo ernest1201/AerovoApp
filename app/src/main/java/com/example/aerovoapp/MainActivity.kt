@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aerovoapp.DisplayMenuActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,10 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun gotoMenu(view: View) {
+    fun showMenu(view: View) {
         setContentView(R.layout.activity_display_menu)
     }
-
 
     fun gotoMijnAerovo(view: View) {
         val intent = Intent(this, mijnAerovo::class.java).apply {
@@ -26,22 +24,23 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun gotoMain(view: View) {
-        setContentView(R.layout.activity_main)
-    }
+//    Obsolete
+//    fun gotoMain(view: View) {
+//        setContentView(R.layout.activity_main)
+//    }
 
-
-    //TODO functies en schermen maken
     fun gotoMeldingen(view: View) {
         val intent = Intent(this,MeldingScherm::class.java).apply {  }
         startActivity(intent)
     }
 
     fun gotoInstellingen(view: View) {
-        Toast.makeText(applicationContext, "Ga naar instellingen", Toast.LENGTH_LONG).show()
-
+        val intent = Intent(this, AppInstellingen::class.java).apply {  }
+        startActivity(intent)
     }
 
+
+    //TODO grafieken pagina maken en nav functie toevoegen aan elke pagina
     fun gotoGrafieken(view: View) {
         Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
 

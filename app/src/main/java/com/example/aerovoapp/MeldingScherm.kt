@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.core.graphics.alpha
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_melding_scherm.*
 import kotlinx.android.synthetic.main.top_bar.view.*
 
@@ -23,7 +23,7 @@ class MeldingScherm : AppCompatActivity() {
     }
 
     private fun meldingWeergave(aantalMeldingen: Int) {
-        //TODO get text for each melding
+        //TODO voeg functie "getMeldingText" toe voor elke melding
         if (aantalMeldingen <= 0){
             melding5.alpha = 0F
             melding4.alpha = 0F
@@ -55,7 +55,7 @@ class MeldingScherm : AppCompatActivity() {
         //TODO get text for melding
     }
 
-    fun gotoMenu(view: View) {
+    fun showMenu(view: View) {
         setContentView(R.layout.activity_display_menu)
     }
 
@@ -69,10 +69,12 @@ class MeldingScherm : AppCompatActivity() {
     }
 
     fun gotoInstellingen(view: View) {
-
+        val intent = Intent(this, AppInstellingen::class.java).apply {  }
+        startActivity(intent)
     }
 
     fun gotoGrafieken(view: View) {
+        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
 
     }
 

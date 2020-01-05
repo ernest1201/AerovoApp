@@ -20,7 +20,7 @@
         android:layout_width="131dp"
         android:layout_height="122dp"
         android:background="#00FBFBFB"
-        android:onClick="gotoMenu"
+        android:onClick="showMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

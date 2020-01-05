@@ -26,15 +26,13 @@ class mijnAerovo : AppCompatActivity() {
         include_aerovo2.postcode.text = getString(R.string.aerovo_postcode, "2624ZC")
     }
 
-    fun gotoMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-
     fun aerovoToevoegen(view: View) {
         Toast.makeText(applicationContext, "Toevoegen komt hier!", Toast.LENGTH_SHORT).show()
     }
 
+    fun showMenu(view: View) {
+        setContentView(R.layout.activity_display_menu)
+    }
 
     fun gotoMijnAerovo(view: View) {
         setContentView(R.layout.aerovo_mijn)
@@ -46,11 +44,12 @@ class mijnAerovo : AppCompatActivity() {
     }
 
     fun gotoInstellingen(view: View) {
-
+        val intent = Intent(this, AppInstellingen::class.java).apply {  }
+        startActivity(intent)
     }
 
     fun gotoGrafieken(view: View) {
-
+        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
     }
 
 
