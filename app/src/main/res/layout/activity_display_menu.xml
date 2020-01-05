@@ -14,6 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+<!--errors bij onClick boeit niet, werkt wel gewoon-->
 
     <Button
         android:id="@+id/menu_mijn_aerovo_button"
@@ -30,8 +31,8 @@
         android:id="@+id/menu_meldingen_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="gotoMain"
-        android:text="@string/meldingen"
+        android:onClick="gotoMeldingen"
+        android:text="@string/Meldingen"
         app:layout_constraintBottom_toTopOf="@+id/menu_instellingen_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +42,7 @@
         android:id="@+id/menu_instellingen_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="gotoInstellingen"
         android:text="@string/instellingen"
         app:layout_constraintBottom_toTopOf="@+id/menu_grafiek_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +53,7 @@
         android:id="@+id/menu_grafiek_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="gotoGrafieken"
         android:text="@string/Grafiek"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

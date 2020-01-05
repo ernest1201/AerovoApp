@@ -9,11 +9,20 @@
     tools:context=".mijnAerovo">
 
     <include
-        android:id="@+id/include_topBar_menu"
+        android:id="@+id/include_topBar_mijnAerovo"
         layout="@layout/top_bar"
         android:layout_width="0dp"
         android:layout_height="122dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/menu_button_main"
+        android:layout_width="131dp"
+        android:layout_height="122dp"
+        android:background="#00FBFBFB"
+        android:onClick="gotoMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,21 +49,12 @@
         />
 
     <Button
-        android:id="@+id/menu_button_main"
-        android:layout_width="131dp"
-        android:layout_height="122dp"
-        android:background="#00FBFBFB"
-        android:onClick="gotoMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/aerovo_toevoegen_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="aerovoToevoegen"
         android:text="@string/toevoegen"
-        app:layout_constraintTop_toBottomOf="@id/include_topBar_menu" />
+        app:layout_constraintTop_toBottomOf="@id/include_topBar_mijnAerovo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

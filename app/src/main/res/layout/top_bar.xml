@@ -16,14 +16,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Aerovo_tekst"
+        android:id="@+id/Aerovo_top_tekst"
         android:layout_width="0dp"
         android:layout_height="122dp"
         android:text="@string/Aerovo"
         android:textSize="72sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/AerovoLogo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

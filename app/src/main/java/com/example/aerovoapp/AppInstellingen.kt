@@ -1,14 +1,12 @@
 package com.example.aerovoapp
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
-class DisplayMenuActivity : AppCompatActivity() {
+class AppInstellingen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_display_menu)
+        setContentView(R.layout.activity_app_instellingen)
     }
-
-
 }
