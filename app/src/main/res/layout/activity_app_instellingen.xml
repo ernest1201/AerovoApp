@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/notificatieInstellingen"
+        android:id="@+id/notificatieInstellingen_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -45,10 +45,52 @@
         android:onClick="changeConsent"
         android:switchPadding="24dp"
         android:text="@string/Consent"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/notificatieInstellingen" />
+        app:layout_constraintTop_toBottomOf="@id/notificatieInstellingen_button" />
+
+
+    <Button
+        android:id="@+id/verwijder_account_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account_verwijderen"
+        android:onClick="popUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/consent_switch"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/contact_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_header"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@id/tel_en_mail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/verwijder_account_button"/>
+
+    <TextView
+        android:id="@+id/tel_en_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tel_en_mail"
+        app:layout_constraintTop_toBottomOf="@id/contact_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <include
+        android:id="@+id/include_delete_check"
+        layout="@layout/activity_verwijder_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <!--TODO add account verwijderern button & contact scherm mockup 19-->
 

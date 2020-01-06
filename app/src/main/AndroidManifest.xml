@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".AppInstellingen"/>
+        <activity android:name=".verwijder_popup"/>
+        <activity android:name=".AppInstellingen" />
         <activity android:name=".MeldingScherm" />
         <activity android:name=".DisplayMenuActivity" />
         <activity android:name=".mijnAerovo" />

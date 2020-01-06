@@ -53,6 +53,21 @@ class MeldingScherm : AppCompatActivity() {
 
     private fun getMeldingText(meldingNummer: Int){
         //TODO get text for melding
+        if (meldingNummer == 1) {
+            //melding1.text =
+        }
+        if (meldingNummer == 2) {
+            //melding2.text 3
+        }
+        if(meldingNummer == 3) {
+            //melding3.text =
+        }
+        if (meldingNummer == 4) {
+            //melding4.text =
+        }
+        if (meldingNummer == 5) {
+            //melding5.text =
+        }
     }
 
     fun showMenu(view: View) {

@@ -22,6 +22,12 @@
     <string name="Recente_meldingen">Recente meldingen</string>
     <string name="notificatie_instellingen">Notificatie instellingen</string>
     <string name="Consent">Toestemming delen van meetgegevens</string>
+    <string name="account_verwijderen">Account verwijderen</string>
+    <string name="contact_header">-\ \ \ \ \ Contact gegevens</string>
+    <string name="tel_en_mail">Telefoonnummer: 020 240 1958\nEmail:Support@aerovo.nl</string>
+    <string name="verwijderen_bevestiging">Weet je zeker dat je je account wilt verwijderen?\nLet op dit kan niet ongedaan worden.</string>
+    <string name="ja">Ja</string>
+    <string name="nee">Nee</string>
 
 
 

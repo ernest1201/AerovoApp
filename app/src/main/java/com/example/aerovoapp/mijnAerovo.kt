@@ -31,7 +31,7 @@ class mijnAerovo : AppCompatActivity() {
     }
 
     //TODO variabel aantal aerovo's en tekst van server
-    
+
 
     fun showMenu(view: View) {
         setContentView(R.layout.activity_display_menu)
