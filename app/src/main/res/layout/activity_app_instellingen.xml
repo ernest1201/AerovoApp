@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/menu_button_main"
+        android:id="@+id/menu_button_Instellingen"
         android:layout_width="131dp"
         android:layout_height="122dp"
         android:background="#00FBFBFB"
@@ -90,9 +90,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--TODO add account verwijderern button & contact scherm mockup 19-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,7 +61,7 @@ class AppInstellingen : AppCompatActivity() {
     fun popUp(view: View){
         include_delete_check.visibility = View.VISIBLE
         include_topBar_appInstellingen.alpha = 0.5F
-        menu_button_main.alpha = 0.5F
+        menu_button_Instellingen.alpha = 0.5F
         notificatieInstellingen_button.alpha = 0.5F
         consent_switch.alpha = 0.5F
         verwijder_account_button.alpha = 0.5F
@@ -71,28 +71,26 @@ class AppInstellingen : AppCompatActivity() {
 
     fun dontDelete(view: View){
         include_delete_check.visibility = View.INVISIBLE
-        include_topBar_appInstellingen.alpha = 1F
-        menu_button_main.alpha = 1F
-        notificatieInstellingen_button.alpha = 1F
-        consent_switch.alpha = 1F
-        verwijder_account_button.alpha = 1F
-        contact_header.alpha = 1F
-        tel_en_mail.alpha = 1F
+        zetViewCorrect(view)
     }
 
     fun deleteAccount(view: View){
         //TODO fix yes loop altough not really necesarry when returning to loginscreen
         //TODO delete account and logout
         include_delete_check.visibility = View.INVISIBLE
+        zetViewCorrect(view)
+        Toast.makeText(applicationContext, "Account wordt verwijderd", Toast.LENGTH_LONG).show()
+        setContentView(R.layout.activity_main)
+    }
+
+    private fun zetViewCorrect(view: View){
         include_topBar_appInstellingen.alpha = 1F
-        menu_button_main.alpha = 1F
+        menu_button_Instellingen.alpha = 1F
         notificatieInstellingen_button.alpha = 1F
         consent_switch.alpha = 1F
         verwijder_account_button.alpha = 1F
         contact_header.alpha = 1F
         tel_en_mail.alpha = 1F
-        Toast.makeText(applicationContext, "Account wordt verwijderd", Toast.LENGTH_LONG).show()
-        setContentView(R.layout.activity_main)
     }
 
 
