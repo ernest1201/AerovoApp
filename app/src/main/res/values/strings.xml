@@ -29,6 +29,17 @@
     <string name="ja">Ja</string>
     <string name="nee">Nee</string>
     <string name="notificaties">Notificaties</string>
+    <string name="tijd">-   Tijd</string>
+    <string name="van">Van:</string>
+    <string name="tot">Tot:</string>
+    <string name="dagen">-\ \ \ \ \ Dagen</string>
+    <string name="maandag">Maandag</string>
+    <string name="dinsdag">Dinsdag</string>
+    <string name="woensdag">Woensdag</string>
+    <string name="donderdag">Donderdag</string>
+    <string name="vrijdag">Vrijdag</string>
+    <string name="zaterdag">Zaterdag</string>
+    <string name="zondag">Zondag</string>
 
 
 </resources>

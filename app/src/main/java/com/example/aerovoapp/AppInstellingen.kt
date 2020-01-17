@@ -1,5 +1,6 @@
 package com.example.aerovoapp
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -48,8 +49,8 @@ class AppInstellingen : AppCompatActivity() {
     }
 
     fun gotoNotificatieInstellingen(view: View){
-        //TODO notificatie instellingen scherm maken mockup 22
-        Toast.makeText(applicationContext, "Ga naar notificatie instellingen", Toast.LENGTH_LONG).show()
+     val intent = Intent(this,NotificatieInstellingen::class.java).apply {  }
+        startActivity(intent)
     }
 
     fun changeConsent(view: View){
@@ -93,5 +94,10 @@ class AppInstellingen : AppCompatActivity() {
         tel_en_mail.alpha = 1F
     }
 
+    /*class MyClass{
+        companion object{
+            var activity:Activity? = null
+        }
+    }*/
 
 }
