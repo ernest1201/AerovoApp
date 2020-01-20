@@ -17,11 +17,12 @@ class AppInstellingen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app_instellingen)
-        consent_switch.isChecked = getResources().getBoolean(R.bool.consent) //Set consent toggle to stored value
+        consent_switch.isChecked =
+            getResources().getBoolean(R.bool.consent) //Set consent toggle to stored value
         changeTopBar()
     }
 
-    fun changeTopBar(){
+    fun changeTopBar() {
         include_topBar_appInstellingen.Aerovo_top_tekst.text = getString(R.string.instellingen)
         include_topBar_appInstellingen.Aerovo_top_tekst.textSize = 50F
     }
@@ -31,12 +32,12 @@ class AppInstellingen : AppCompatActivity() {
     }
 
     fun gotoMijnAerovo(view: View) {
-        val intent = Intent(this, mijnAerovo::class.java).apply{}
+        val intent = Intent(this, mijnAerovo::class.java).apply {}
         startActivity(intent)
     }
 
     fun gotoMeldingen(view: View) {
-        val intent = Intent(this,MeldingScherm::class.java).apply {  }
+        val intent = Intent(this, MeldingScherm::class.java).apply { }
         startActivity(intent)
     }
 
@@ -45,21 +46,22 @@ class AppInstellingen : AppCompatActivity() {
     }
 
     fun gotoGrafieken(view: View) {
-        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
-    }
-
-    fun gotoNotificatieInstellingen(view: View){
-     val intent = Intent(this,NotificatieInstellingen::class.java).apply {  }
+        val intent = Intent(this, Grafieken::class.java).apply { }
         startActivity(intent)
     }
 
-    fun changeConsent(view: View){
+    fun gotoNotificatieInstellingen(view: View) {
+        val intent = Intent(this, NotificatieInstellingen::class.java).apply { }
+        startActivity(intent)
+    }
+
+    fun changeConsent(view: View) {
         consent_switch.isChecked != consent_switch.isChecked
         //TODO find a way to store settings which can change. Res files are not changeable.
         //TODO update consent to server
     }
 
-    fun popUp(view: View){
+    fun popUp(view: View) {
         include_delete_check.visibility = View.VISIBLE
         include_topBar_appInstellingen.alpha = 0.5F
         menu_button_Instellingen.alpha = 0.5F
@@ -70,12 +72,12 @@ class AppInstellingen : AppCompatActivity() {
         tel_en_mail.alpha = 0.5F
     }
 
-    fun dontDelete(view: View){
+    fun dontDelete(view: View) {
         include_delete_check.visibility = View.INVISIBLE
         zetViewCorrect(view)
     }
 
-    fun deleteAccount(view: View){
+    fun deleteAccount(view: View) {
         //TODO fix yes loop altough not really necesarry when returning to loginscreen
         //TODO delete account and logout
         include_delete_check.visibility = View.INVISIBLE
@@ -84,7 +86,7 @@ class AppInstellingen : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    private fun zetViewCorrect(view: View){
+    private fun zetViewCorrect(view: View) {
         include_topBar_appInstellingen.alpha = 1F
         menu_button_Instellingen.alpha = 1F
         notificatieInstellingen_button.alpha = 1F

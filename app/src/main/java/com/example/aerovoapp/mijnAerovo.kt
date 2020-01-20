@@ -42,19 +42,19 @@ class mijnAerovo : AppCompatActivity() {
     }
 
     fun gotoMeldingen(view: View) {
-        val intent = Intent(this,MeldingScherm::class.java).apply {  }
+        val intent = Intent(this, MeldingScherm::class.java).apply { }
         startActivity(intent)
     }
 
     fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply {  }
+        val intent = Intent(this, AppInstellingen::class.java).apply { }
         startActivity(intent)
     }
 
     fun gotoGrafieken(view: View) {
-        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, Grafieken::class.java).apply { }
+        startActivity(intent)
     }
-
 
 
 }

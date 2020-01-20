@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_app_instellingen.*
 import kotlinx.android.synthetic.main.activity_notificatie_instellingen.*
 import kotlinx.android.synthetic.main.top_bar.view.*
 
+
 class NotificatieInstellingen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,18 +48,25 @@ class NotificatieInstellingen : AppCompatActivity() {
     }
 
     fun gotoGrafieken(view: View) {
-        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, Grafieken::class.java).apply { }
+        startActivity(intent)
     }
 
 
-    //TODO fix de knop
-    fun changeMaandag(view: View) {
-        if(RadioButton_maandag.isChecked){
-            RadioButton_maandag.isChecked = false
-        } /*else
-        {
-            RadioButton_maandag.isChecked = true
-        }*/
+    fun clearDagen(view: View) {
+        RadioButton_maandag.isChecked = false
+        RadioButton_dinsdag.isChecked = false
+        RadioButton_woensdag.isChecked = false
+        RadioButton_donderdag.isChecked = false
+        RadioButton_donderdag.isChecked = false
+        RadioButton_vrijdag.isChecked = false
+        RadioButton_vrijdag.isChecked = false
+        RadioButton_zaterdag.isChecked = false
+        RadioButton_zondag.isChecked = false
+    }
+
+    fun instellingenOpslaan(view: View) {
+        //TODO sla alles op
     }
 
 

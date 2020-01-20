@@ -57,7 +57,7 @@
         android:id="@+id/dagen_tekst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
+        android:layout_marginBottom="270dp"
         android:text="@string/dagen"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,9 +69,8 @@
         android:id="@+id/RadioButton_maandag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/maandag"
-        android:onClick="changeMaandag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/dagen_tekst" />
 
@@ -79,7 +78,7 @@
         android:id="@+id/RadioButton_dinsdag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/dinsdag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/RadioButton_maandag" />
@@ -88,7 +87,7 @@
         android:id="@+id/RadioButton_woensdag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/woensdag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/RadioButton_dinsdag" />
@@ -97,7 +96,7 @@
         android:id="@+id/RadioButton_donderdag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/donderdag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/RadioButton_woensdag" />
@@ -106,7 +105,7 @@
         android:id="@+id/RadioButton_vrijdag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/vrijdag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/RadioButton_donderdag" />
@@ -115,7 +114,7 @@
         android:id="@+id/RadioButton_zaterdag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/zaterdag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/RadioButton_vrijdag" />
@@ -124,10 +123,31 @@
         android:id="@+id/RadioButton_zondag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/zondag"
         app:layout_constraintStart_toStartOf="@id/dagen_tekst"
         app:layout_constraintTop_toBottomOf="@id/RadioButton_zaterdag" />
+
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="clearDagen"
+        android:text="@string/clear"
+        app:layout_constraintStart_toStartOf="@id/dagen_tekst"
+        app:layout_constraintTop_toBottomOf="@id/RadioButton_zondag" />
+
+    <Button
+        android:id="@+id/button_opslaan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:onClick="instellingenOpslaan"
+        android:text="@string/opslaan"
+        app:layout_constraintStart_toEndOf="@id/button_clear"
+        app:layout_constraintTop_toTopOf="@id/button_clear" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

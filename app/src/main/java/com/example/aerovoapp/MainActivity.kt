@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
 
     //TODO grafieken pagina maken en nav functie toevoegen aan elke pagina
     fun gotoGrafieken(view: View) {
-        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
-
+        val intent = Intent(this, Grafieken::class.java).apply { }
+        startActivity(intent)
     }
 
     //TODO notificaties sturen

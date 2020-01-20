@@ -24,34 +24,34 @@ class MeldingScherm : AppCompatActivity() {
 
     private fun meldingWeergave(aantalMeldingen: Int) {
         //TODO voeg functie "getMeldingText" toe voor elke melding
-        if (aantalMeldingen <= 0){
+        if (aantalMeldingen <= 0) {
             melding5.alpha = 0F
             melding4.alpha = 0F
             melding3.alpha = 0F
             melding2.alpha = 0F
             melding1.alpha = 0F
         }
-        if (aantalMeldingen == 1){
+        if (aantalMeldingen == 1) {
             melding5.alpha = 0F
             melding4.alpha = 0F
             melding3.alpha = 0F
             melding2.alpha = 0F
         }
-        if (aantalMeldingen == 2){
+        if (aantalMeldingen == 2) {
             melding5.alpha = 0F
             melding4.alpha = 0F
             melding3.alpha = 0F
         }
-        if (aantalMeldingen == 3){
+        if (aantalMeldingen == 3) {
             melding5.alpha = 0F
             melding4.alpha = 0F
         }
-        if (aantalMeldingen == 4){
+        if (aantalMeldingen == 4) {
             melding5.alpha = 0F
         }
     }
 
-    private fun getMeldingText(meldingNummer: Int){
+    private fun getMeldingText(meldingNummer: Int) {
         //TODO get text for melding
         if (meldingNummer == 1) {
             //melding1.text =
@@ -59,7 +59,7 @@ class MeldingScherm : AppCompatActivity() {
         if (meldingNummer == 2) {
             //melding2.text 3
         }
-        if(meldingNummer == 3) {
+        if (meldingNummer == 3) {
             //melding3.text =
         }
         if (meldingNummer == 4) {
@@ -84,13 +84,13 @@ class MeldingScherm : AppCompatActivity() {
     }
 
     fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply {  }
+        val intent = Intent(this, AppInstellingen::class.java).apply { }
         startActivity(intent)
     }
 
     fun gotoGrafieken(view: View) {
-        Toast.makeText(applicationContext, "Ga naar grafieken", Toast.LENGTH_LONG).show()
-
+        val intent = Intent(this, Grafieken::class.java).apply { }
+        startActivity(intent)
     }
 
 

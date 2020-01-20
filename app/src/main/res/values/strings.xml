@@ -40,6 +40,8 @@
     <string name="vrijdag">Vrijdag</string>
     <string name="zaterdag">Zaterdag</string>
     <string name="zondag">Zondag</string>
+    <string name="clear">clear</string>
+    <string name="opslaan">Opslaan</string>
 
 
 </resources>
