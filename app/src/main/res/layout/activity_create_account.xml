@@ -7,7 +7,7 @@
     tools:context="com.example.myapplication.create_account">
 
     <EditText
-        android:id="@+id/username2"
+        android:id="@+id/email2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username2" />
+        app:layout_constraintTop_toBottomOf="@+id/email2" />
 
     <EditText
         android:id="@+id/password3"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password2" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/maakAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"

@@ -1,7 +1,5 @@
-package com.example.myapplication
+package com.example.aerovo1
 
-import Login2Activity
-import WelcomeActivity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -19,49 +17,37 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
-    internal var RegisterURL = "https://demonuts.com/Demonuts/JsonTest/Tennis/simpleregister.php"
-    private var etname: EditText? = null
-    private var ethobby:EditText? = null
-    private var etusername:EditText? = null
+    internal var LoginURL = "https://aerovo.ddns.net/login/simplelogin.php"
+    private var etusername: EditText? = null
     private var etpassword:EditText? = null
-    private var btnregister: Button? = null
-    private var tvlogin: TextView? = null
+    private var btnlogin: Button? = null
+    private var tvreg: TextView? = null
+    private val LoginTask = 1
     private var preferenceHelper: PreferenceHelper? = null
-    private val RegTask = 1
     private var mProgressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         preferenceHelper = PreferenceHelper(this)
 
-        if (preferenceHelper!!.getIsLogin()) {
-            val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            this.finish()
-        }
-
-
-        etname = findViewById<View>(R.id.etname) as EditText
-        ethobby = findViewById<View>(R.id.ethobby) as EditText
-        etusername = findViewById<View>(R.id.etusername) as EditText
+        etusername = findViewById<View>(R.id.etemail) as EditText
         etpassword = findViewById<View>(R.id.etpassword) as EditText
 
-        btnregister = findViewById<View>(R.id.btn) as Button
-        tvlogin = findViewById<View>(R.id.tvlogin) as TextView
+        btnlogin = findViewById<View>(R.id.btn) as Button
+        tvreg = findViewById<View>(R.id.tvreg) as TextView
 
-        tvlogin!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, Login2Activity::class.java)
+        tvreg!!.setOnClickListener {
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
         }
 
-        btnregister!!.setOnClickListener {
+        btnlogin!!.setOnClickListener {
             try {
-                register()
+                login()
             } catch (e: IOException) {
                 e.printStackTrace()
             } catch (e: JSONException) {
@@ -69,45 +55,42 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
     }
 
     @Throws(IOException::class, JSONException::class)
-    private fun register() {
+    private fun login() {
 
-        showSimpleProgressDialog(this@MainActivity, null, "Loading...", false)
+        showSimpleProgressDialog(this@LoginActivity, null, "Loading...", false)
 
         try {
 
-            Fuel.post(RegisterURL, listOf("name" to  etname!!.text.toString()
-                , "hobby" to  ethobby!!.text.toString()
-                , "username" to  etusername!!.text.toString()
+            Fuel.post(LoginURL, listOf(
+                "email" to  etusername!!.text.toString()
                 , "password" to  etpassword!!.text.toString()
             )).responseJson { request, response, result ->
                 Log.d("plzzzzz", result.get().content)
-                onTaskCompleted(result.get().content,RegTask)
+                onTaskCompleted(result.get().content,LoginTask)
             }
         } catch (e: Exception) {
 
         } finally {
 
         }
-
     }
 
     private fun onTaskCompleted(response: String, task: Int) {
         Log.d("responsejson", response)
-        removeSimpleProgressDialog()
+        removeSimpleProgressDialog()  //will remove progress dialog
         when (task) {
-            RegTask -> if (isSuccess(response)) {
+            LoginTask -> if (isSuccess(response)) {
                 saveInfo(response)
-                Toast.makeText(this@MainActivity, "Registered Successfully!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
+                Toast.makeText(this@LoginActivity, "Login Successfully!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@LoginActivity, WelcomeActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 this.finish()
             } else {
-                Toast.makeText(this@MainActivity, getErrorMessage(response), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getErrorMessage(response), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -121,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                 for (i in 0 until dataArray.length()) {
 
                     val dataobj = dataArray.getJSONObject(i)
-                    preferenceHelper!!.putName(dataobj.getString("name"))
+                    preferenceHelper!!.putName(dataobj.getString("gebruikersnaam"))
                     preferenceHelper!!.putHobby(dataobj.getString("hobby"))
                 }
             }
@@ -198,6 +181,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 }
-
