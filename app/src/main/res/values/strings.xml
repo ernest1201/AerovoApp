@@ -42,6 +42,54 @@
     <string name="zondag">Zondag</string>
     <string name="clear">clear</string>
     <string name="opslaan">Opslaan</string>
+    <string name="laad_grafiek">Laad grafiek</string>
+    <string name="geen_aerovo">U heeft nog geen Aerovo\'s toegevoegd</string>
+    <string name="geen_meldingen">U heeft momenteel geen meldingen</string>
+    <string name="melding_placeholder">Melding placeholder %d</string>
+
+
+    <!--Grafiek-->
+    <string name="temperatuur_celsius">Temparatuur in ℃</string>
+    <string name="zuurstof">Zuurstof waarde in PPM</string>
+    <string name="fijnstof">Fijnstof waarde in PPM</string>
+    <string name="koolstof">CO2 waarde in PPM</string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Wachtwoord</string>
+    <string name="prompt_password2">Herhaal wachtwoord</string>
+    <string name="action_sign_in">Nu inloggen</string>
+    <string name="make_account">Maak account</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_settings">Instellingen</string>
+    <string name="nieuw_account">Nieuw bij Aerovo? Aanmelden</string>
+
+
+    <string name="enter_name">Voer naam in</string>
+    <string name="enter_username">Voer gebruikersnaam in</string>
+    <string name="enter_password">Voer wachtwoord in</string>
+    <string name="register">Register</string>
+    <string name="not_registered">Nog geen account? Klik dan hier</string>
+    <string name="login">Login</string>
+
+
+    <string name="Naam">Naam</string>
+    <string name="Email2">Email</string>
+    <string name="NieuwWachtwoord">Wachtwoord</string>
+    <string name="registreer">Registreren</string>
+    <string name="BestaandAccount">Heeft u al een Account? Klik hier om in te loggen!</string>
+    <string name="MaakAccount">Klik hier om een nieuw account te maken!</string>
+    <string name="NuInloggen">Nu inloggen</string>
+    <string name="wachtwoord">Wachtwoord</string>
+    <string name="email">Email</string>
+    <string name="Welkom">Welkom</string>
+    <string name="hobby">Hobby</string>
+    <string name="Uitloggen">Uitloggen</string>
 
 
 </resources>

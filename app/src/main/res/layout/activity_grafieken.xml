@@ -28,10 +28,185 @@
     <com.jjoe64.graphview.GraphView
         android:id="@+id/Grafiek"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/include_topBar_grafieken"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="200dp"
-        />
+        android:layout_marginTop="100dp"
+        android:paddingBottom="240dp"
+        app:layout_constraintBottom_toTopOf="@id/scrollView"
+        app:layout_constraintTop_toBottomOf="@id/include_topBar_grafieken" />
+
+    <TextView
+        android:id="@+id/temp_kleur"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/temp_kleur"
+        app:layout_constraintStart_toStartOf="@id/include_topBar_grafieken"
+        app:layout_constraintTop_toBottomOf="@id/include_topBar_grafieken" />
+
+    <TextView
+        android:id="@+id/temp_tekst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="@string/temperatuur_celsius"
+        app:layout_constraintBottom_toBottomOf="@id/temp_kleur"
+        app:layout_constraintStart_toStartOf="@id/temp_kleur" />
+
+    <TextView
+        android:id="@+id/o2_kleur"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/o2_kleur"
+        app:layout_constraintStart_toStartOf="@id/temp_kleur"
+        app:layout_constraintTop_toBottomOf="@id/temp_kleur" />
+
+    <TextView
+        android:id="@+id/o2_tekst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="@string/zuurstof"
+        app:layout_constraintBottom_toBottomOf="@id/o2_kleur"
+        app:layout_constraintStart_toStartOf="@id/o2_kleur" />
+
+    <TextView
+        android:id="@+id/fijnstof_kleur"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginLeft="180dp"
+        android:background="@color/fijnstof_kleur"
+        app:layout_constraintBottom_toBottomOf="@id/temp_kleur"
+        app:layout_constraintStart_toStartOf="@id/temp_kleur" />
+
+    <TextView
+        android:id="@+id/fijnstof_tekst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="@string/fijnstof"
+        app:layout_constraintBottom_toBottomOf="@id/fijnstof_kleur"
+        app:layout_constraintStart_toStartOf="@id/fijnstof_kleur" />
+
+    <TextView
+        android:id="@+id/co2_kleur"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/co2_kleur"
+        app:layout_constraintBottom_toBottomOf="@id/o2_kleur"
+        app:layout_constraintStart_toStartOf="@id/fijnstof_kleur" />
+
+    <TextView
+        android:id="@+id/co2_tekst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="@string/koolstof"
+        app:layout_constraintBottom_toBottomOf="@id/co2_kleur"
+        app:layout_constraintStart_toStartOf="@id/co2_kleur" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Grafiek">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/aerovo1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo1" />
+
+            <CheckBox
+                android:id="@+id/aerovo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo2" />
+
+            <CheckBox
+                android:id="@+id/aerovo3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo3" />
+
+            <CheckBox
+                android:id="@+id/aerovo4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo4" />
+
+            <CheckBox
+                android:id="@+id/aerovo5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo5" />
+
+            <CheckBox
+                android:id="@+id/aerovo6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo6" />
+
+            <CheckBox
+                android:id="@+id/aerovo7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo7" />
+
+            <CheckBox
+                android:id="@+id/aerovo8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo8" />
+
+            <CheckBox
+                android:id="@+id/aerovo9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectOne"
+                android:text="Aerovo9" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/button_grafiek_laden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="laadGrafiek"
+        android:text="@string/laad_grafiek"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
 
     <!--TODO selecteer welke aerovo er gebruikt moet worden en welke tijdsperiode-->
 

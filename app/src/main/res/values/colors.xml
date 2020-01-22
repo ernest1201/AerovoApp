@@ -6,5 +6,18 @@
     <color name="screenBackground">#2196F3</color>
     <color name="buttonBackground">#BBDEFB</color>
     <color name="screenBackground2">#26C6DA</color>
+    <color name="aerovo_blauw">#FF00ADEF</color>
+    <color name="lime">#00FF00</color>
+    <color name="blauw">#0000FF</color>
+    <color name="magenta">#FF00FF</color>
     <color name="rood">#ff0000</color>
+
+
+    <!--Grafieken-->
+    <color name="temp_kleur">#00FF00</color>
+    <color name="o2_kleur">#0000FF</color>
+    <color name="fijnstof_kleur">#FF00FF</color>
+    <color name="co2_kleur">#ff0000</color>
+
+
 </resources>

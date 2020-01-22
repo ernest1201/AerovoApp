@@ -49,9 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/include_topBar_notificatieInstellingen" />
 
-    <!--TODO mogelijk timepicker voor tijden gebruiken-->
-
-    <!--TODO zet dagen goed-->
+    <!--TODO tijden toevoegen en mogelijk timepicker voor tijden gebruiken-->
 
     <TextView
         android:id="@+id/dagen_tekst"

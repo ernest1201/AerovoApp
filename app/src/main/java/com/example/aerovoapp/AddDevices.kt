@@ -1,14 +1,13 @@
 package com.example.aerovoapp
 
-import android.content.Intent
-import android.os.Bundle
-import android.view.View
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.kittinunf.fuel.Fuel
@@ -17,51 +16,39 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+class AddDevices : AppCompatActivity() {
 
     internal var RegisterURL = "https://aerovo.ddns.net/login/simpleregister.php"
-    private var etemail: EditText? = null
-    private var etpostcode: EditText? = null
-    private var ettelefoon: EditText? = null
-    private var etusername: EditText? = null
-    private var etpassword: EditText? = null
-    private var btnregister: Button? = null
-    private var tvlogin: TextView? = null
+    private var etnumber: EditText? = null
+    private var etwifi: EditText? = null
+    private var etwifiWachtwoord: EditText? = null
+    private var btnBevestigen: Button? = null
+    private var btnWelcome: Button? = null
     private var preferenceHelper: PreferenceHelper? = null
     private val RegTask = 1
     private var mProgressDialog: ProgressDialog? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_add_devices)
 
         preferenceHelper = PreferenceHelper(this)
 
-        if (preferenceHelper!!.getIsLogin()) {
-            val intent = Intent(this@MainActivity, mijnAerovo::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            this.finish()
-        }
 
 
-        etemail = findViewById<View>(R.id.etemail) as EditText
-        etpostcode = findViewById<View>(R.id.etpostcode) as EditText
-        etusername = findViewById<View>(R.id.etname) as EditText
-        etpassword = findViewById<View>(R.id.etpassword) as EditText
-        ettelefoon = findViewById<View>(R.id.ettelefoon) as EditText
+        etnumber = findViewById<View>(R.id.etnumber) as EditText
+        etwifi = findViewById<View>(R.id.etwifi) as EditText
+        etwifiWachtwoord = findViewById<View>(R.id.etwifiWachtwoord) as EditText
 
-        btnregister = findViewById<View>(R.id.btn) as Button
-        tvlogin = findViewById<View>(R.id.tvlogin) as TextView
+        btnBevestigen = findViewById<View>(R.id.btnBevestigen) as Button
+        btnWelcome = findViewById<View>(R.id.btnWelcome) as Button
 
-        tvlogin!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        btnWelcome!!.setOnClickListener {
+            val intent = Intent(this@AddDevices, WelcomeActivity::class.java)
             startActivity(intent)
         }
 
-        btnregister!!.setOnClickListener {
+        btnBevestigen!!.setOnClickListener {
             try {
                 register()
             } catch (e: IOException) {
@@ -77,21 +64,16 @@ class MainActivity : AppCompatActivity() {
     @Throws(IOException::class, JSONException::class)
     private fun register() {
 
-        showSimpleProgressDialog(this@MainActivity, null, "Loading...", false)
+        showSimpleProgressDialog(this@AddDevices, null, "Loading...", false)
 
         try {
 
-            Fuel.post(
-                RegisterURL, listOf(
-                    "email" to etemail!!.text.toString()
-                    , "postcode" to etpostcode!!.text.toString()
-                    , "username" to etusername!!.text.toString()
-                    , "password" to etpassword!!.text.toString()
-                    , "telefoon" to ettelefoon!!.text.toString()
-                )
-            ).responseJson { request, response, result ->
+            Fuel.post(RegisterURL, listOf("serieNummer" to  etnumber!!.text.toString()
+                , "wifi" to  etwifi!!.text.toString()
+                , "wifiWachtwoord" to  etwifiWachtwoord!!.text.toString()
+            )).responseJson { request, response, result ->
                 Log.d("plzzzzz", result.get().content)
-                onTaskCompleted(result.get().content, RegTask)
+                onTaskCompleted(result.get().content,RegTask)
             }
         } catch (e: Exception) {
 
@@ -107,15 +89,13 @@ class MainActivity : AppCompatActivity() {
         when (task) {
             RegTask -> if (isSuccess(response)) {
                 saveInfo(response)
-                Toast.makeText(this@MainActivity, "Registered Successfully!", Toast.LENGTH_SHORT)
-                    .show()
-                val intent = Intent(this@MainActivity, mijnAerovo::class.java)
+                Toast.makeText(this@AddDevices, "Aerovo toegevoegd!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@AddDevices, WelcomeActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 this.finish()
             } else {
-                Toast.makeText(this@MainActivity, getErrorMessage(response), Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@AddDevices, getErrorMessage(response), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -129,8 +109,8 @@ class MainActivity : AppCompatActivity() {
                 for (i in 0 until dataArray.length()) {
 
                     val dataobj = dataArray.getJSONObject(i)
-                    preferenceHelper!!.putName(dataobj.getString("gebruikersnaam"))
-                    preferenceHelper!!.putHobby(dataobj.getString("hobby"))
+                    preferenceHelper!!.putName(dataobj.getString("wifi"))
+                    preferenceHelper!!.putHobby(dataobj.getString("wifiWachtwoord"))
                 }
             }
         } catch (e: JSONException) {
@@ -168,12 +148,7 @@ class MainActivity : AppCompatActivity() {
         return "No data"
     }
 
-    fun showSimpleProgressDialog(
-        context: Context,
-        title: String?,
-        msg: String,
-        isCancelable: Boolean
-    ) {
+    fun showSimpleProgressDialog(context: Context, title: String?, msg: String, isCancelable: Boolean) {
         try {
             if (mProgressDialog == null) {
                 mProgressDialog = ProgressDialog.show(context, title, msg)
@@ -211,33 +186,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    /*fun showMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-    fun gotoMijnAerovo(view: View) {
-        val intent = Intent(this, mijnAerovo()::class.java).apply {
-        }
-        startActivity(intent)
-    }
-
-    fun gotoMeldingen(view: View) {
-        val meldingen = Intent(this, MeldingScherm::class.java).apply { }
-        startActivity(meldingen)
-    }
-
-    fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply { }
-        startActivity(intent)
-    }
-
-    fun gotoGrafieken(view: View) {
-        val intent = Intent(this, Grafieken::class.java).apply { }
-        startActivity(intent)
-    }*/
-
-    //TODO notificaties sturen
-
 
 }

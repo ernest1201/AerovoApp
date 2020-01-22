@@ -1,69 +1,54 @@
 package com.example.aerovoapp
 
-import android.content.Intent
-import android.os.Bundle
-import android.view.View
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.android.extension.responseJson
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
-    internal var RegisterURL = "https://aerovo.ddns.net/login/simpleregister.php"
-    private var etemail: EditText? = null
-    private var etpostcode: EditText? = null
-    private var ettelefoon: EditText? = null
+    internal var LoginURL = "https://aerovo.ddns.net/login/simplelogin.php"
     private var etusername: EditText? = null
-    private var etpassword: EditText? = null
-    private var btnregister: Button? = null
-    private var tvlogin: TextView? = null
+    private var etpassword:EditText? = null
+    private var btnlogin: Button? = null
+    private var tvreg: TextView? = null
+    private val LoginTask = 1
     private var preferenceHelper: PreferenceHelper? = null
-    private val RegTask = 1
     private var mProgressDialog: ProgressDialog? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         preferenceHelper = PreferenceHelper(this)
 
-        if (preferenceHelper!!.getIsLogin()) {
-            val intent = Intent(this@MainActivity, mijnAerovo::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            this.finish()
-        }
-
-
-        etemail = findViewById<View>(R.id.etemail) as EditText
-        etpostcode = findViewById<View>(R.id.etpostcode) as EditText
-        etusername = findViewById<View>(R.id.etname) as EditText
+        etusername = findViewById<View>(R.id.etemail) as EditText
         etpassword = findViewById<View>(R.id.etpassword) as EditText
-        ettelefoon = findViewById<View>(R.id.ettelefoon) as EditText
 
-        btnregister = findViewById<View>(R.id.btn) as Button
-        tvlogin = findViewById<View>(R.id.tvlogin) as TextView
+        btnlogin = findViewById<View>(R.id.btn) as Button
+        tvreg = findViewById<View>(R.id.tvreg) as TextView
 
-        tvlogin!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+        tvreg!!.setOnClickListener {
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
 
-        btnregister!!.setOnClickListener {
+        btnlogin!!.setOnClickListener {
             try {
-                register()
+                login()
             } catch (e: IOException) {
                 e.printStackTrace()
             } catch (e: JSONException) {
@@ -71,51 +56,42 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
     }
 
     @Throws(IOException::class, JSONException::class)
-    private fun register() {
+    private fun login() {
 
-        showSimpleProgressDialog(this@MainActivity, null, "Loading...", false)
+        showSimpleProgressDialog(this@LoginActivity, null, "Loading...", false)
 
         try {
 
-            Fuel.post(
-                RegisterURL, listOf(
-                    "email" to etemail!!.text.toString()
-                    , "postcode" to etpostcode!!.text.toString()
-                    , "username" to etusername!!.text.toString()
-                    , "password" to etpassword!!.text.toString()
-                    , "telefoon" to ettelefoon!!.text.toString()
-                )
-            ).responseJson { request, response, result ->
+            Fuel.post(LoginURL, listOf(
+                "email" to  etusername!!.text.toString()
+                , "password" to  etpassword!!.text.toString()
+            )).responseJson { request, response, result ->
                 Log.d("plzzzzz", result.get().content)
-                onTaskCompleted(result.get().content, RegTask)
+                onTaskCompleted(result.get().content,LoginTask)
             }
         } catch (e: Exception) {
 
         } finally {
 
         }
-
     }
 
     private fun onTaskCompleted(response: String, task: Int) {
         Log.d("responsejson", response)
-        removeSimpleProgressDialog()
+        removeSimpleProgressDialog()  //will remove progress dialog
         when (task) {
-            RegTask -> if (isSuccess(response)) {
+            LoginTask -> if (isSuccess(response)) {
                 saveInfo(response)
-                Toast.makeText(this@MainActivity, "Registered Successfully!", Toast.LENGTH_SHORT)
-                    .show()
-                val intent = Intent(this@MainActivity, mijnAerovo::class.java)
+                Toast.makeText(this@LoginActivity, "Login Successfully!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@LoginActivity, mijnAerovo::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 this.finish()
             } else {
-                Toast.makeText(this@MainActivity, getErrorMessage(response), Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@LoginActivity, getErrorMessage(response), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -168,12 +144,7 @@ class MainActivity : AppCompatActivity() {
         return "No data"
     }
 
-    fun showSimpleProgressDialog(
-        context: Context,
-        title: String?,
-        msg: String,
-        isCancelable: Boolean
-    ) {
+    fun showSimpleProgressDialog(context: Context, title: String?, msg: String, isCancelable: Boolean) {
         try {
             if (mProgressDialog == null) {
                 mProgressDialog = ProgressDialog.show(context, title, msg)
@@ -211,33 +182,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    /*fun showMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-    fun gotoMijnAerovo(view: View) {
-        val intent = Intent(this, mijnAerovo()::class.java).apply {
-        }
-        startActivity(intent)
-    }
-
-    fun gotoMeldingen(view: View) {
-        val meldingen = Intent(this, MeldingScherm::class.java).apply { }
-        startActivity(meldingen)
-    }
-
-    fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply { }
-        startActivity(intent)
-    }
-
-    fun gotoGrafieken(view: View) {
-        val intent = Intent(this, Grafieken::class.java).apply { }
-        startActivity(intent)
-    }*/
-
-    //TODO notificaties sturen
-
-
 }

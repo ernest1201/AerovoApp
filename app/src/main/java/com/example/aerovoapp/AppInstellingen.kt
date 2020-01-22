@@ -1,18 +1,19 @@
 package com.example.aerovoapp
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_app_instellingen.*
-import kotlinx.android.synthetic.main.aerovo_mijn_aerovo.view.*
-import kotlinx.android.synthetic.main.top_bar.*
 import kotlinx.android.synthetic.main.top_bar.view.*
 
 
 class AppInstellingen : AppCompatActivity() {
+
+    private var btnlogout: Button? = null
+    private var preferenceHelper: PreferenceHelper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,19 @@ class AppInstellingen : AppCompatActivity() {
         consent_switch.isChecked =
             getResources().getBoolean(R.bool.consent) //Set consent toggle to stored value
         changeTopBar()
+
+        preferenceHelper = PreferenceHelper(this)
+
+        btnlogout = findViewById<View>(R.id.uitlog_button) as Button
+
+        btnlogout!!.setOnClickListener {
+            preferenceHelper!!.putIsLogin(false)
+            val intent = Intent(this@AppInstellingen, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            this@AppInstellingen.finish()
+        }
+
     }
 
     fun changeTopBar() {
