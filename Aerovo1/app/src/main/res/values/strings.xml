@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Aerovo1</string>
+    <string name="Naam">Naam</string>
+    <string name="Email2">Email</string>
+    <string name="NieuwWachtwoord">Nieuw wachtwoord</string>
+    <string name="registreer">Registreren</string>
+    <string name="BestaandAccount">Heeft u al een Account? Klik hier om in te loggen!</string>
+    <string name="MaakAccount">Klik hier om een nieuw account te maken!</string>
+    <string name="NuInloggen">Nu inloggen</string>
+    <string name="wachtwoord">Wachtwoord</string>
+    <string name="email">Email</string>
+    <string name="Welkom">Welkom</string>
+    <string name="hobby">Hobby</string>
+    <string name="Uitloggen">Uitloggen!</string>
+</resources>
