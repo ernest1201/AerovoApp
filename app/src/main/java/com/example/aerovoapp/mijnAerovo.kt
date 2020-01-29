@@ -2,26 +2,86 @@ package com.example.aerovoapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.android.extension.responseJson
 import kotlinx.android.synthetic.main.aerovo_mijn.*
 import kotlinx.android.synthetic.main.aerovo_mijn_aerovo.view.*
+import org.json.JSONException
+import org.json.JSONObject
 
 
 class mijnAerovo : AppCompatActivity() {
 
     //lateinit var newAerovo: ImageView
 
+    private var preferenceHelper: PreferenceHelper? = null
+    private var aantalAerovos = 6
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.aerovo_mijn)
         //getAerovo()
+        preferenceHelper = PreferenceHelper(this)
         changeText()
-        setVisibility(6) //TODO get the number from storage
+        setVisibility(aantalAerovos) //TODO get the number from storage
     }
 
+    /*private fun getAerovo() {
+
+        //showSimpleProgressDialog(this@LoginActivity, null, "Loading...", false)
+        val getAerovo_url =
+            resources.getString(R.string.api_base_url) + resources.getString(R.string.api_getaerovo)
+        try {
+
+            Fuel.post(
+                getAerovo_url, listOf(
+                    "secret" to preferenceHelper!!.getSecret()
+                )
+            ).responseJson { request, response, result ->
+                Log.d("plzzzzz", result.get().content)
+                saveInfo(result.get().content)
+            }
+        } catch (e: Exception) {
+
+        } finally {
+
+        }
+    }
+
+    fun saveInfo(response: String) {
+        preferenceHelper!!.putIsLogin(true)
+        try {
+            val jsonObject = JSONObject(response)
+            if (jsonObject.getString("status") == "true") {
+                val dataArray = jsonObject.getJSONArray("data")
+                for (i in 0 until dataArray.length()) {
+
+                    val dataobj = dataArray.getJSONObject(i)
+                    preferenceHelper!!.putName(dataobj.getString("gebruikersnaam"))
+                    preferenceHelper!!.putSecret(dataobj.getString("secret"))
+                    preferenceHelper!!.putEmail(dataobj.getString("email"))
+                    //preferenceHelper!!.putHobby(dataobj.getString("hobby"))
+                }
+            } else {
+                val dataArray = jsonObject.getJSONArray("data")
+                for (i in 0 until dataArray.length()) {
+
+                    val dataobj = dataArray.getJSONObject(i)
+                    preferenceHelper!!.putMessage(dataobj.getString("message"))
+                }
+
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+    }
+*/
 
     /*private fun getAerovo() {
         //TODO get number of aerovo's
@@ -50,6 +110,11 @@ class mijnAerovo : AppCompatActivity() {
     }*/
 
     private fun setVisibility(aantalAerovo: Int) {
+        val message = "User has no Aerovo devices added"
+        if(preferenceHelper!!.getMessage().equals(message)){
+            aantalAerovos = 0
+        }
+
         if (aantalAerovo != 0) {
             textView_geen_aerovos.visibility = View.GONE
         }
@@ -114,11 +179,14 @@ class mijnAerovo : AppCompatActivity() {
 
         var huidigeAerovo = include_aerovo_1
 
+        //huidigeAerovo.aerovo_naam_textview.text = preferenceHelper!!.getMessage()
         huidigeAerovo.aerovo_naam_textview.text = getString(R.string.aerovo_naam, 1)
+        //huidigeAerovo.aerovo_naam_textview.text = preferenceHelper!!.getSecret()
         huidigeAerovo.custom_locatie.text = getString(R.string.aerovo_locatie, "HHS D1.011")
         huidigeAerovo.postcode.text = getString(R.string.aerovo_postcode, "2624ZC")
 
         huidigeAerovo = include_aerovo_2
+        //huidigeAerovo.aerovo_naam_textview.text = preferenceHelper!!.getSecret()
         huidigeAerovo.aerovo_naam_textview.text = getString(R.string.aerovo_naam, 2)
         huidigeAerovo.custom_locatie.text = getString(R.string.aerovo_locatie, "HHS D1.012")
         huidigeAerovo.postcode.text = getString(R.string.aerovo_postcode, "2624ZC")
@@ -162,6 +230,7 @@ class mijnAerovo : AppCompatActivity() {
 
     fun aerovoToevoegen(view: View) {
         val intent = Intent(this,AddDevices::class.java).apply {  }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
@@ -169,25 +238,8 @@ class mijnAerovo : AppCompatActivity() {
 
 
     fun showMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-    fun gotoMijnAerovo(view: View) {
-        setContentView(R.layout.aerovo_mijn)
-    }
-
-    fun gotoMeldingen(view: View) {
-        val intent = Intent(this, MeldingScherm::class.java).apply { }
-        startActivity(intent)
-    }
-
-    fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply { }
-        startActivity(intent)
-    }
-
-    fun gotoGrafieken(view: View) {
-        val intent = Intent(this, Grafieken::class.java).apply { }
+        val intent = Intent(this,DisplayMenuActivity::class.java).apply {  }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 

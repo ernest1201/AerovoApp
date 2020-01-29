@@ -90,30 +90,12 @@ class MeldingScherm : AppCompatActivity() {
     }
 
     fun showMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-    fun gotoMijnAerovo(view: View) {
-        val intent = Intent(this, mijnAerovo::class.java).apply {}
-
+        val intent = Intent(this,DisplayMenuActivity::class.java).apply {  }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
-    fun gotoMeldingen(view: View) {
-        setContentView(R.layout.activity_melding_scherm)
-    }
 
-    fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply { }
-
-        startActivity(intent)
-    }
-
-    fun gotoGrafieken(view: View) {
-        val intent = Intent(this, Grafieken::class.java).apply { }
-
-        startActivity(intent)
-    }
 
 
 }

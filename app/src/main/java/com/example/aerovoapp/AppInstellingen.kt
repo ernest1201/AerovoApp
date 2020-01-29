@@ -2,16 +2,22 @@ package com.example.aerovoapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.android.extension.responseJson
 import kotlinx.android.synthetic.main.activity_app_instellingen.*
 import kotlinx.android.synthetic.main.top_bar.view.*
+import org.json.JSONException
+import java.io.IOException
 
 
 class AppInstellingen : AppCompatActivity() {
 
+    internal var delete_User_Url = "https://aerovo.ddns.net/deleteuser.php"
     private var btnlogout: Button? = null
     private var preferenceHelper: PreferenceHelper? = null
 
@@ -38,29 +44,12 @@ class AppInstellingen : AppCompatActivity() {
 
     fun changeTopBar() {
         include_topBar_appInstellingen.Aerovo_top_tekst.text = getString(R.string.instellingen)
-        include_topBar_appInstellingen.Aerovo_top_tekst.textSize = 50F
+        include_topBar_appInstellingen.Aerovo_top_tekst.textSize = 45F
     }
 
     fun showMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-    fun gotoMijnAerovo(view: View) {
-        val intent = Intent(this, mijnAerovo::class.java).apply {}
-        startActivity(intent)
-    }
-
-    fun gotoMeldingen(view: View) {
-        val intent = Intent(this, MeldingScherm::class.java).apply { }
-        startActivity(intent)
-    }
-
-    fun gotoInstellingen(view: View) {
-        setContentView(R.layout.activity_app_instellingen)
-    }
-
-    fun gotoGrafieken(view: View) {
-        val intent = Intent(this, Grafieken::class.java).apply { }
+        val intent = Intent(this,DisplayMenuActivity::class.java).apply {  }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
@@ -94,10 +83,43 @@ class AppInstellingen : AppCompatActivity() {
     fun deleteAccount(view: View) {
         //TODO fix yes loop altough not really necesarry when returning to loginscreen
         //TODO delete account and logout
-        include_delete_check.visibility = View.INVISIBLE
+        Toast.makeText(applicationContext, "Account wordt verwijderd", Toast.LENGTH_LONG).show()
+
+        try {
+            deleteUser()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+        preferenceHelper!!.putIsLogin(false)
+        val intent = Intent(this,MainActivity::class.java).apply {  }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+
+        /*include_delete_check.visibility = View.INVISIBLE
         zetViewCorrect(view)
         Toast.makeText(applicationContext, "Account wordt verwijderd", Toast.LENGTH_LONG).show()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)*/
+    }
+
+    @Throws(IOException::class, JSONException::class)
+    private fun deleteUser(){
+       /* try {
+    //TODO verder met delete use
+            Fuel.post(delete_User_Url, listOf(
+                "email" to  etusername!!.text.toString()
+                , "password" to  etpassword!!.text.toString()
+            )).responseJson { request, response, result ->
+                Log.d("plzzzzz", result.get().content)
+                onTaskCompleted(result.get().content,LoginTask)
+            }
+        } catch (e: Exception) {
+
+        } finally {
+
+        }*/
     }
 
     private fun zetViewCorrect(view: View) {
@@ -110,10 +132,5 @@ class AppInstellingen : AppCompatActivity() {
         tel_en_mail.alpha = 1F
     }
 
-    /*class MyClass{
-        companion object{
-            var activity:Activity? = null
-        }
-    }*/
 
 }

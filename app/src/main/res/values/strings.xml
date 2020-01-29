@@ -7,6 +7,14 @@
     <string name="Random_button_text">Random</string>
     <string name="previous">Previous</string>
 
+    <!--API strings-->
+    <string name="api_base_url">https://aerovo.ddns.net/</string>
+    <string name="api_login">login/simplelogin.php</string>
+    <string name="api_register">login/simpleregister.php</string>
+    <string name="api_getaerovo">getaerovo.php</string>
+
+
+
     <string name="description_logo">Aerovo logo</string>
     <string name="Aerovo">Aerovo</string>
     <string name="MainTestButton">Main test button</string>
@@ -49,10 +57,10 @@
 
 
     <!--Grafiek-->
-    <string name="temperatuur_celsius">Temparatuur in ℃</string>
+    <string name="temperatuur_celsius">Temperatuur in ℃</string>
     <string name="zuurstof">Zuurstof waarde in PPM</string>
     <string name="fijnstof">Fijnstof waarde in PPM</string>
-    <string name="koolstof">CO2 waarde in PPM</string>
+    <string name="koolstof">CO₂ waarde in PPM</string>
 
 
     <!-- Strings related to login -->
@@ -75,7 +83,6 @@
     <string name="enter_password">Voer wachtwoord in</string>
     <string name="register">Register</string>
     <string name="not_registered">Nog geen account? Klik dan hier</string>
-    <string name="login">Login</string>
 
 
     <string name="Naam">Naam</string>

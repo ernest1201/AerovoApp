@@ -40,7 +40,7 @@
         android:paddingLeft="5dp"
         app:layout_constraintTop_toBottomOf="@id/etname"/>
 
-    <EditText
+    <!--<EditText
         android:id="@+id/etpostcode"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -50,7 +50,7 @@
         android:background="#fff"
         android:hint="Postcode"
         android:paddingLeft="5dp"
-        app:layout_constraintTop_toBottomOf="@id/ettelefoon"/>
+        app:layout_constraintTop_toBottomOf="@id/ettelefoon"/>-->
 
     <EditText
         android:id="@+id/etemail"
@@ -62,7 +62,7 @@
         android:background="#fff"
         android:hint="@string/Email2"
         android:paddingLeft="5dp"
-        app:layout_constraintTop_toBottomOf="@id/etpostcode"/>
+        app:layout_constraintTop_toBottomOf="@id/ettelefoon"/>
 
     <EditText
         android:id="@+id/etpassword"

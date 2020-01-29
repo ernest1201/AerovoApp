@@ -19,9 +19,8 @@ import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
 
-    internal var LoginURL = "https://aerovo.ddns.net/login/simplelogin.php"
     private var etusername: EditText? = null
-    private var etpassword:EditText? = null
+    private var etpassword: EditText? = null
     private var btnlogin: Button? = null
     private var tvreg: TextView? = null
     private val LoginTask = 1
@@ -62,15 +61,18 @@ class LoginActivity : AppCompatActivity() {
     private fun login() {
 
         showSimpleProgressDialog(this@LoginActivity, null, "Loading...", false)
-
+        val login_url =
+            resources.getString(R.string.api_base_url) + resources.getString(R.string.api_login)
         try {
 
-            Fuel.post(LoginURL, listOf(
-                "email" to  etusername!!.text.toString()
-                , "password" to  etpassword!!.text.toString()
-            )).responseJson { request, response, result ->
+            Fuel.post(
+                login_url, listOf(
+                    "email" to etusername!!.text.toString()
+                    , "password" to etpassword!!.text.toString()
+                )
+            ).responseJson { request, response, result ->
                 Log.d("plzzzzz", result.get().content)
-                onTaskCompleted(result.get().content,LoginTask)
+                onTaskCompleted(result.get().content, LoginTask)
             }
         } catch (e: Exception) {
 
@@ -91,7 +93,8 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
                 this.finish()
             } else {
-                Toast.makeText(this@LoginActivity, getErrorMessage(response), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getErrorMessage(response), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -106,7 +109,9 @@ class LoginActivity : AppCompatActivity() {
 
                     val dataobj = dataArray.getJSONObject(i)
                     preferenceHelper!!.putName(dataobj.getString("gebruikersnaam"))
-                    preferenceHelper!!.putHobby(dataobj.getString("hobby"))
+                    preferenceHelper!!.putSecret(dataobj.getString("secret"))
+                    preferenceHelper!!.putEmail(dataobj.getString("email"))
+                    //preferenceHelper!!.putHobby(dataobj.getString("hobby"))
                 }
             }
         } catch (e: JSONException) {
@@ -144,7 +149,12 @@ class LoginActivity : AppCompatActivity() {
         return "No data"
     }
 
-    fun showSimpleProgressDialog(context: Context, title: String?, msg: String, isCancelable: Boolean) {
+    fun showSimpleProgressDialog(
+        context: Context,
+        title: String?,
+        msg: String,
+        isCancelable: Boolean
+    ) {
         try {
             if (mProgressDialog == null) {
                 mProgressDialog = ProgressDialog.show(context, title, msg)

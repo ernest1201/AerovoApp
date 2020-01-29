@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
 
         etemail = findViewById<View>(R.id.etemail) as EditText
-        etpostcode = findViewById<View>(R.id.etpostcode) as EditText
+        //etpostcode = findViewById<View>(R.id.etpostcode) as EditText
         etusername = findViewById<View>(R.id.etname) as EditText
         etpassword = findViewById<View>(R.id.etpassword) as EditText
         ettelefoon = findViewById<View>(R.id.ettelefoon) as EditText
@@ -84,7 +84,6 @@ class MainActivity : AppCompatActivity() {
             Fuel.post(
                 RegisterURL, listOf(
                     "email" to etemail!!.text.toString()
-                    , "postcode" to etpostcode!!.text.toString()
                     , "username" to etusername!!.text.toString()
                     , "password" to etpassword!!.text.toString()
                     , "telefoon" to ettelefoon!!.text.toString()
@@ -130,7 +129,9 @@ class MainActivity : AppCompatActivity() {
 
                     val dataobj = dataArray.getJSONObject(i)
                     preferenceHelper!!.putName(dataobj.getString("gebruikersnaam"))
-                    preferenceHelper!!.putHobby(dataobj.getString("hobby"))
+                    preferenceHelper!!.putSecret(dataobj.getString("secret"))
+                    preferenceHelper!!.putEmail(dataobj.getString("email"))
+                    //preferenceHelper!!.putHobby(dataobj.getString("hobby"))
                 }
             }
         } catch (e: JSONException) {
@@ -212,30 +213,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /*fun showMenu(view: View) {
-        setContentView(R.layout.activity_display_menu)
-    }
-
-    fun gotoMijnAerovo(view: View) {
-        val intent = Intent(this, mijnAerovo()::class.java).apply {
-        }
-        startActivity(intent)
-    }
-
-    fun gotoMeldingen(view: View) {
-        val meldingen = Intent(this, MeldingScherm::class.java).apply { }
-        startActivity(meldingen)
-    }
-
-    fun gotoInstellingen(view: View) {
-        val intent = Intent(this, AppInstellingen::class.java).apply { }
-        startActivity(intent)
-    }
-
-    fun gotoGrafieken(view: View) {
-        val intent = Intent(this, Grafieken::class.java).apply { }
-        startActivity(intent)
-    }*/
 
     //TODO notificaties sturen
 

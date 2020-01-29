@@ -6,23 +6,33 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".AddDevices"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".Grafieken" />
-        <activity android:name=".NotificatieInstellingen" />
-        <activity android:name=".verwijder_popup" />
-        <activity android:name=".AppInstellingen" />
-        <activity android:name=".MeldingScherm" />
-        <activity android:name=".DisplayMenuActivity" />
-        <activity android:name=".mijnAerovo" />
+        <activity android:name=".AddDevices"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Grafieken"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".NotificatieInstellingen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".verwijder_popup"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AppInstellingen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MeldingScherm"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DisplayMenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mijnAerovo"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

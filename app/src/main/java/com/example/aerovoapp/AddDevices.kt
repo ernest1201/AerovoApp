@@ -37,14 +37,13 @@ class AddDevices : AppCompatActivity() {
 
 
         etnumber = findViewById<View>(R.id.etnumber) as EditText
-        etwifi = findViewById<View>(R.id.etwifi) as EditText
-        etwifiWachtwoord = findViewById<View>(R.id.etwifiWachtwoord) as EditText
 
         btnBevestigen = findViewById<View>(R.id.btnBevestigen) as Button
         btnWelcome = findViewById<View>(R.id.btnWelcome) as Button
 
         btnWelcome!!.setOnClickListener {
-            val intent = Intent(this@AddDevices, WelcomeActivity::class.java)
+            val intent = Intent(this@AddDevices, mijnAerovo::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
 
@@ -90,7 +89,7 @@ class AddDevices : AppCompatActivity() {
             RegTask -> if (isSuccess(response)) {
                 saveInfo(response)
                 Toast.makeText(this@AddDevices, "Aerovo toegevoegd!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@AddDevices, WelcomeActivity::class.java)
+                val intent = Intent(this@AddDevices, mijnAerovo::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 this.finish()
@@ -110,7 +109,6 @@ class AddDevices : AppCompatActivity() {
 
                     val dataobj = dataArray.getJSONObject(i)
                     preferenceHelper!!.putName(dataobj.getString("wifi"))
-                    preferenceHelper!!.putHobby(dataobj.getString("wifiWachtwoord"))
                 }
             }
         } catch (e: JSONException) {
